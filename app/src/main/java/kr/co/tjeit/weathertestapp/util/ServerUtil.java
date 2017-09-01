@@ -37,9 +37,9 @@ public class ServerUtil {
 //    2. 해당 기능을 사용하기위해 우리가 제공해야하는 데이터도 알아내자.
 //    3. 해당 주소/데이터를 기반으로 메쏘드 생성.
 
-    public static void getCurrentWeatherFromServer(final Context context, final JsonResponseHandler handler) {
+    public static void getCurrentWeatherFromServer(final Context context, String lat, String lon, final JsonResponseHandler handler) {
 //        기능에 따라 매번 주소를 다르게 적어줘야함.
-        String url =  "http://apis.skplanetx.com/weather/current/minutely?version=1&lat=37.610465&lon=126.928954";
+        String url =  "http://apis.skplanetx.com/weather/current/minutely?version=1&lat=" + lat + "&lon=" + lon;
 
 //        기능을 사용하기 위해 필요한 데이터를 담는 부분.
 

@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity {
 
 //                확인버튼이 눌리면, 서버에서 현재 날씨를 가져온다.
 
-                ServerUtil.getCurrentWeatherFromServer(mContext, new ServerUtil.JsonResponseHandler() {
+                ServerUtil.getCurrentWeatherFromServer(mContext, latEdt.getText().toString(), lonEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
 //                서버에서 응답이 오면 자동으로 실행되는 부분.
@@ -56,6 +56,8 @@ public class MainActivity extends BaseActivity {
                         Log.d("실시간날씨JSON", json.toString());
 
                         try {
+                            stationNameTxt.setText(json.getJSONObject("weather").getJSONArray("minutely").getJSONObject(0).getJSONObject("station").getString("name"));
+                            skyTxt.setText(json.getJSONObject("weather").getJSONArray("minutely").getJSONObject(0).getJSONObject("sky").getString("name"));
                             currentTempTxt.setText(String.format(Locale.KOREA, "%.1f ℃", Double.parseDouble(json.getJSONObject("weather").getJSONArray("minutely")
                                     .getJSONObject(0).getJSONObject("temperature").getString("tc"))));
                         } catch (JSONException e) {
