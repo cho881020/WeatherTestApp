@@ -13,18 +13,21 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/latEdt"
             android:hint="위도 입력"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
 
         <EditText
+            android:id="@+id/lonEdt"
             android:hint="경도 입력"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/okBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="확인"/>
