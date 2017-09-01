@@ -37,33 +37,66 @@ public class AsyncHttpRequest {
 	public static void post(final Context context, final String url , final Map<String, String> params, final boolean showProgress, final HttpResponseHandler handler) {
 
 
-        if (isNetworkAvailable(context)) {
-            AsyncTaskHandler async = new AsyncTaskHandler() {
-                @Override
-                public String doInBackground() {
+		if (isNetworkAvailable(context)) {
+			AsyncTaskHandler async = new AsyncTaskHandler() {
+				@Override
+				public String doInBackground() {
 
-                    if (params == null)
-                        return HttpRequest.post(url).body();
-                    else
-                        return HttpRequest.post(url).form(params).body();
-                }
-            };
+					if (params == null)
+						return HttpRequest.post(url).body();
+					else
+						return HttpRequest.post(url).form(params).body();
+				}
+			};
 
-            new AsyncHttpRequestTask(context, async, showProgress, handler).execute();
-        } else {
-            AlertDialog.Builder alert = new AlertDialog.Builder(context);
-            alert.setTitle("연결 실패");
-            alert.setMessage("인터넷 연결에 문제가 있습니다.");
-            alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    System.exit(0);
-                }
-            });
-            alert.show();
-        }
+			new AsyncHttpRequestTask(context, async, showProgress, handler).execute();
+		} else {
+			AlertDialog.Builder alert = new AlertDialog.Builder(context);
+			alert.setTitle("연결 실패");
+			alert.setMessage("인터넷 연결에 문제가 있습니다.");
+			alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					System.exit(0);
+				}
+			});
+			alert.show();
+		}
 
 	}
+
+
+	public static void get(final Context context, final String url , final Map<String, String> params, final boolean showProgress, final HttpResponseHandler handler) {
+
+
+		if (isNetworkAvailable(context)) {
+			AsyncTaskHandler async = new AsyncTaskHandler() {
+				@Override
+				public String doInBackground() {
+
+					if (params == null)
+						return HttpRequest.get(url).header("appKey", "24ed134c-67f2-37f4-a1b4-212b86e80067").body();
+					else
+						return HttpRequest.get(url).header("appKey", "24ed134c-67f2-37f4-a1b4-212b86e80067").form(params).body();
+				}
+			};
+
+			new AsyncHttpRequestTask(context, async, showProgress, handler).execute();
+		} else {
+			AlertDialog.Builder alert = new AlertDialog.Builder(context);
+			alert.setTitle("연결 실패");
+			alert.setMessage("인터넷 연결에 문제가 있습니다.");
+			alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					System.exit(0);
+				}
+			});
+			alert.show();
+		}
+
+	}
+
 
     static boolean isNetworkAvailable(final Context context) {
         return ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;
@@ -264,5 +297,8 @@ public class AsyncHttpRequest {
 				mProgress.dismiss();			
 		}
 	}
+
+
+
 
 }

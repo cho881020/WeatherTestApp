@@ -37,18 +37,18 @@ public class ServerUtil {
 //    2. 해당 기능을 사용하기위해 우리가 제공해야하는 데이터도 알아내자.
 //    3. 해당 주소/데이터를 기반으로 메쏘드 생성.
 
-    public static void facebook_login(final Context context, final String name, final String uid, final String email, final JsonResponseHandler handler) {
+    public static void getCurrentWeatherFromServer(final Context context, final JsonResponseHandler handler) {
 //        기능에 따라 매번 주소를 다르게 적어줘야함.
-        String url = BASE_URL+"mobile/facebook_login";
+        String url =  "http://apis.skplanetx.com/weather/current/minutely?version=1&lat=37.610465&lon=126.928954";
 
 //        기능을 사용하기 위해 필요한 데이터를 담는 부분.
 
         Map<String, String> data = new HashMap<String, String>();
-        data.put("uid", uid);
-        data.put("name", name);
-        data.put("email", email);
+//        data.put("version", "1");
+//        data.put("lat", "37.610465");
+//        data.put("lon", "126.928954");
 
-        AsyncHttpRequest.post(context, url,  data, true, new AsyncHttpRequest.HttpResponseHandler() {
+        AsyncHttpRequest.get(context, url,  data, true, new AsyncHttpRequest.HttpResponseHandler() {
 
             @Override
             public boolean onPrepare() {
@@ -79,6 +79,5 @@ public class ServerUtil {
 
         });
     }
-
 
 }

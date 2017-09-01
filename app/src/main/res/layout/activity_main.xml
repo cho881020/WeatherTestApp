@@ -9,18 +9,21 @@
     tools:context="kr.co.tjeit.weathertestapp.MainActivity">
 
     <TextView
+        android:id="@+id/stationNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:text="지역이름"/>
+        android:text="지역이름"
+        android:textSize="50sp" />
 
     <TextView
+        android:id="@+id/skyTxt"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="현재하늘 (Ex.맑음)"/>
     <TextView
+        android:id="@+id/currentTempTxt"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +31,7 @@
         android:text="현재 온도 (Ex. 28.06도)"/>
 
     <TextView
+        android:id="@+id/maxTempTxt"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +39,7 @@
         android:text="최고 온도 (Ex. 28.06도)"/>
 
     <TextView
+        android:id="@+id/minTempTxt"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +47,7 @@
         android:text="최저 온도 (Ex. 28.06도)"/>
 
     <TextView
+        android:id="@+id/windDirTxt"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,6 +55,7 @@
         android:text="바람 각도 (Ex. 300.1)"/>
 
     <TextView
+        android:id="@+id/windSpdTxt"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
