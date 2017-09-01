@@ -38,6 +38,12 @@ public class MainActivity extends BaseActivity {
 
                 Log.d("실시간날씨JSON", json.toString());
 
+                try {
+                    currentTempTxt.setText(String.format(Locale.KOREA, "%.1f ℃", Double.parseDouble(json.getJSONObject("weather").getJSONArray("minutely")
+                            .getJSONObject(0).getJSONObject("temperature").getString("tc"))));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
 
             }
