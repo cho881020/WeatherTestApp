@@ -114,7 +114,7 @@ public class MainActivity extends BaseActivity {
             JSONObject sky = first.getJSONObject("sky");
             String name = sky.getString("name");
 
-            Toast.makeText(mContext, "현재 날씨 : " + name, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mContext, "현재 날씨 : " + name, Toast.LENGTH_SHORT).show();
 
 
         } catch (JSONException e) {
